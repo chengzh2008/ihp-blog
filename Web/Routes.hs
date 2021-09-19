@@ -9,3 +9,6 @@ instance AutoRoute PostsController
 
 
 
+
+instance AutoRoute CommentsController
+
