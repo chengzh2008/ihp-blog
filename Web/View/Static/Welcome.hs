@@ -1,10 +1,24 @@
 module Web.View.Static.Welcome where
+import           Data.Aeson                     ( object )
 import           Web.View.Prelude
 
 data WelcomeView = WelcomeView
+data User = User
+  { city    :: Text
+  , country :: Text
+  , phone   :: Text
+  , email   :: Text
+  }
+
+instance ToJSON User where
+  toJSON (User a b c d) =
+    object ["city" .= a, "country" .= b, "phone" .= c, "email" .= d]
+
+user1 = User "seattle" "USA" "2066191302" "z.cheng@f5.com"
 
 instance View WelcomeView where
   html WelcomeView = [hsx|
+              {renderJsonEditor  user1}
          <div style="background-color: #657b83; padding-top: 2rem; padding-bottom: 2rem; color:hsla(196, 13%, 96%, 1); border-radius: 4px">
               <div style="max-width: 800px; margin-left: auto; margin-right: auto">
                   <h1 style="margin-bottom: 2rem; font-size: 2rem; font-weight: 300; border-bottom: 1px solid white; padding-bottom: 0.25rem; border-color: hsla(196, 13%, 60%, 1)">
@@ -40,3 +54,4 @@ instance View WelcomeView where
               </p>
          </div> 
 |]
+

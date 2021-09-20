@@ -1,14 +1,17 @@
-module Web.View.Layout (defaultLayout, Html) where
+module Web.View.Layout
+  ( defaultLayout
+  , Html
+  ) where
 
-import IHP.ViewPrelude
-import IHP.Environment
-import qualified Text.Blaze.Html5            as H
-import qualified Text.Blaze.Html5.Attributes as A
-import Generated.Types
-import IHP.Controller.RequestContext
-import Web.Types
-import Web.Routes
-import Application.Helper.View
+import           Application.Helper.View
+import           Generated.Types
+import           IHP.Controller.RequestContext
+import           IHP.Environment
+import           IHP.ViewPrelude
+import qualified Text.Blaze.Html5              as H
+import qualified Text.Blaze.Html5.Attributes   as A
+import           Web.Routes
+import           Web.Types
 
 defaultLayout :: Html -> Html
 defaultLayout inner = H.docTypeHtml ! A.lang "en" $ [hsx|
@@ -36,6 +39,7 @@ stylesheets :: Html
 stylesheets = [hsx|
         <link rel="stylesheet" href={assetPath "/vendor/bootstrap.min.css"}/>
         <link rel="stylesheet" href={assetPath "/vendor/flatpickr.min.css"}/>
+        <link href="https://cdn.jsdelivr.net/npm/jsoneditor/dist/jsoneditor.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href={assetPath "/app.css"}/>
     |]
 
@@ -52,6 +56,7 @@ scripts = [hsx|
         <script src={assetPath "/vendor/turbolinksInstantClick.js"}></script>
         <script src={assetPath "/vendor/turbolinksMorphdom.js"}></script>
         <script src={assetPath "/helpers.js"}></script>
+        <script src="https://cdn.jsdelivr.net/npm/jsoneditor/dist/jsoneditor.min.js"></script>
         <script src={assetPath "/ihp-auto-refresh.js"}></script>
     |]
 

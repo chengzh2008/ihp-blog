@@ -1,10 +1,12 @@
 module Web.View.Posts.Index where
-import Web.View.Prelude
+import           Web.View.Prelude
 
-data IndexView = IndexView { posts :: [Post] }
+data IndexView = IndexView
+  { posts :: [Post]
+  }
 
 instance View IndexView where
-    html IndexView { .. } = [hsx|
+  html IndexView {..} = [hsx|
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active"><a href={PostsAction}>Posts</a></li>
