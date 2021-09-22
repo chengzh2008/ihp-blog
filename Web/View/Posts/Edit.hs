@@ -23,5 +23,6 @@ renderForm post = formFor
   [hsx|
     {(textField #title)}
     {(textareaField #body) { helpText = "You can use Markdown here"}}
+    {(textField #link)}
     {submitButton}
 |]

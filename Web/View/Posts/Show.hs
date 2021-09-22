@@ -18,6 +18,7 @@ instance View ShowView where
         <h1>{title post}</h1>
         <p>{get #createdAt post |> dateTime }</p>
         <div>{get #body post |> renderMarkdown}</div>
+        <img src={get #link post} />
 
         <a href={get #id post |> NewCommentAction }>Add Comment</a>
         <div>{forEach (get #comments post) renderComment}</div>
@@ -35,5 +36,6 @@ renderComment comment = [hsx|
       <h5>{get #author comment}</h5>
       <h6>{get #createdAt comment |> timeAgo }</h6>
       <p>{get #body comment}</p>
+      <img src="https://picsum.photos/200/300" />
     </div>
   |]
